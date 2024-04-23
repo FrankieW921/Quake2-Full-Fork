@@ -491,6 +491,25 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 		else
 			SpawnDamage (te_sparks, point, normal, take);
 
+		//ifs and cases for monster weaknesses/resistances based on Means of Death
+		//1.5x damage for weakness, .5x damage for resistance
+		if (meansOfDeath == 1 || meansOfDeath == 15) { //physical damage type, blaster and hand grenade
+			if (strcmp(targ->classname, "monster_medic")) {
+
+			}
+		}
+		else if (meansOfDeath == 3 || meansOfDeath == 6 || meansOfDeath == 7) { //fire damage, supershotgun and grenade launcher
+
+		}
+		else if (meansOfDeath == 2 || meansOfDeath == 5) { //ice damage, shotgun and chaingun
+
+		}
+		else if (meansOfDeath == 4 || meansOfDeath == 11) { //electric damage, machinegun and railgun
+
+		}
+		else if (meansOfDeath == 8 || meansOfDeath == 9 || meansOfDeath == 12 || meansOfDeath == 13 || meansOfDeath == 14) { //force damage, rocket launcher and BFG
+
+		}
 
 		targ->health = targ->health - take;
 			

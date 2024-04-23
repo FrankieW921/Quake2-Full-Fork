@@ -552,6 +552,7 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 	float	timer;
 	int		speed;
 	float	radius;
+	int		damageType = 0;
 
 	radius = damage+40;
 	if (is_quad)
@@ -713,6 +714,7 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	vec3_t	start;
 	int		damage = 120;
 	float	radius;
+	int		damageType = 1;
 
 	radius = damage+40;
 	if (is_quad)
@@ -763,6 +765,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	int		damage;
 	float	damage_radius;
 	int		radius_damage;
+	int		damageType = 4;
 
 	damage = 100 + (int)(random() * 20.0);
 	radius_damage = 120;
@@ -855,6 +858,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 void Weapon_Blaster_Fire (edict_t *ent)
 {
 	int		damage;
+	int		damageType = 0;
 
 	if (deathmatch->value)
 		damage = 15;
@@ -967,6 +971,7 @@ void Machinegun_Fire (edict_t *ent)
 	int			damage = 8;
 	int			kick = 2;
 	vec3_t		offset;
+	int			damageType = 3;
 
 	if (!(ent->client->buttons & BUTTON_ATTACK))
 	{
@@ -1062,6 +1067,7 @@ void Chaingun_Fire (edict_t *ent)
 	vec3_t		offset;
 	int			damage;
 	int			kick = 2;
+	int			damageType = 2;
 
 	if (deathmatch->value)
 		damage = 6;
@@ -1196,6 +1202,7 @@ void weapon_shotgun_fire (edict_t *ent)
 	vec3_t		offset;
 	int			damage = 4;
 	int			kick = 8;
+	int			damageType = 2;
 
 	if (ent->client->ps.gunframe == 9)
 	{
@@ -1252,6 +1259,7 @@ void weapon_supershotgun_fire (edict_t *ent)
 	vec3_t		v;
 	int			damage = 6;
 	int			kick = 12;
+	int			damageType = 1;
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
@@ -1314,6 +1322,7 @@ void weapon_railgun_fire (edict_t *ent)
 	vec3_t		offset;
 	int			damage;
 	int			kick;
+	int			damageType = 3;
 
 	if (deathmatch->value)
 	{	// normal damage is too extreme in dm
@@ -1378,6 +1387,7 @@ void weapon_bfg_fire (edict_t *ent)
 	vec3_t	forward, right;
 	int		damage;
 	float	damage_radius = 1000;
+	int		damageType = 4;
 
 	if (deathmatch->value)
 		damage = 200;
