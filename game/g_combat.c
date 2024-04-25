@@ -492,23 +492,77 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			SpawnDamage (te_sparks, point, normal, take);
 
 		//ifs and cases for monster weaknesses/resistances based on Means of Death
-		//1.5x damage for weakness, .5x damage for resistance
-		if (meansOfDeath == 1 || meansOfDeath == 15) { //physical damage type, blaster and hand grenade
-			if (strcmp(targ->classname, "monster_medic")) {
-
+		//1.5x damage for weakness, .75x damage for resistance
+		//enemy: weakness, resistance
+		//barracuda: electric, fire
+		//berserker: ice, physical
+		//brains: ice, force
+		//enforcer/infantry: fire, ice
+		//flyer: electric, fire
+		//gladiator: force, electric
+		//gunner: physical, ice
+		//icarus: electric, force
+		//iron maiden: fire, electric
+		//light guard: physical, force
+		//machine gun guard: ice, physical
+		//medic: physical, force
+		//mutant: force, fire
+		//parasite: fire, electric 
+		//shotgun guard: fire,ice 
+		//tank: force, physical
+		//tank commander: electric, fire
+		//technician: ice, electric
+		//
+		//physical damage type, blaster and hand grenade
+		if (meansOfDeath == 1 || meansOfDeath == 15) { 
+			if (strcmp(targ->classname, "monster_gunner") == 0 || strcmp(targ->classname, "monster_soldier_light") == 0 || strcmp(targ->classname, "monster_medic") == 0) {
+				take *= 1.5;
+			}
+			if (strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_solider") == 0 || strcmp(targ->classname, "monster_tank") == 0) {
+				take *= .75;
 			}
 		}
-		else if (meansOfDeath == 3 || meansOfDeath == 6 || meansOfDeath == 7) { //fire damage, supershotgun and grenade launcher
-
+		//fire damage, supershotgun and grenade launcher
+		else if (meansOfDeath == 3 || meansOfDeath == 6 || meansOfDeath == 7) { 
+			if (strcmp(targ->classname, "monster_infantry") == 0 || strcmp(targ->classname, "monster_chick") == 0 || strcmp(targ->classname, "monster_parasite") == 0 
+				|| strcmp(targ->classname, "monster_soldier_ss") == 0) {
+				take *= 1.5;
+			}
+			if (strcmp(targ->classname, "monster_flipper") == 0 || strcmp(targ->classname, "monster_flyer") == 0 || strcmp(targ->classname, "monster_mutant") == 0
+				|| strcmp(targ->classname, "monster_tank_commander") == 0) {
+				take *= .75;
+			}
 		}
-		else if (meansOfDeath == 2 || meansOfDeath == 5) { //ice damage, shotgun and chaingun
-
+		//ice damage, shotgun and chaingun
+		else if (meansOfDeath == 2 || meansOfDeath == 5) { 
+			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_solider") == 0
+				|| strcmp(targ->classname, "monster_floater") == 0) {
+				take *= 1.5;
+			}
+			if (strcmp(targ->classname, "monster_infantry") == 0 || strcmp(targ->classname, "monster_gunner") == 0 || strcmp(targ->classname, "monster_soldier_ss") == 0) {
+				take *= .75;
+			}
 		}
-		else if (meansOfDeath == 4 || meansOfDeath == 11) { //electric damage, machinegun and railgun
-
+		//electric damage, machinegun and railgun
+		else if (meansOfDeath == 4 || meansOfDeath == 11) { 
+			if (strcmp(targ->classname, "monster_flipper") == 0 || strcmp(targ->classname, "monster_flyer") == 0 || strcmp(targ->classname, "monster_hover") == 0
+				|| strcmp(targ->classname, "monster_tank_commander") == 0) {
+				take *= 1.5;
+			}
+			if (strcmp(targ->classname, "monster_gladiator") == 0 || strcmp(targ->classname, "monster_chick") == 0 || strcmp(targ->classname, "monster_parasite") == 0
+				|| strcmp(targ->classname, "monster_floater") == 0) {
+				take *= .75;
+			}
 		}
-		else if (meansOfDeath == 8 || meansOfDeath == 9 || meansOfDeath == 12 || meansOfDeath == 13 || meansOfDeath == 14) { //force damage, rocket launcher and BFG
-
+		//force damage, rocket launcher and BFG
+		else if (meansOfDeath == 8 || meansOfDeath == 9 || meansOfDeath == 12 || meansOfDeath == 13 || meansOfDeath == 14) { 
+			if (strcmp(targ->classname, "monster_gladiator") == 0 || strcmp(targ->classname, "monster_mutant") == 0 || strcmp(targ->classname, "monster_tank") == 0) {
+				take *= 1.5;
+			}
+			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_hover") == 0 || strcmp(targ->classname, "monster_soldier_light") == 0 
+				|| strcmp(targ->classname, "monster_medic") == 0) {
+				take *= .75;
+			}
 		}
 
 		targ->health = targ->health - take;
