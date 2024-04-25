@@ -156,7 +156,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 
 	if (other->client->pers.weapon != ent->item && 
 		(other->client->pers.inventory[index] == 1) &&
-		( !deathmatch->value || other->client->pers.weapon == FindItem("blaster") ) )
+		( !deathmatch->value || other->client->pers.weapon == FindItem("Hermes (Power Slash) (Physical)") ) )
 		other->client->newweapon = ent->item;
 
 	return true;
@@ -234,9 +234,9 @@ NoAmmoWeaponChange
 void NoAmmoWeaponChange (edict_t *ent)
 {
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("slugs"))]
-		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("railgun"))] )
+		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("Thor (Thunder Reign) (Electric)"))] )
 	{
-		ent->client->newweapon = FindItem ("railgun");
+		ent->client->newweapon = FindItem ("Thor (Thunder Reign) (Electric)");
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("cells"))]
@@ -246,30 +246,30 @@ void NoAmmoWeaponChange (edict_t *ent)
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))]
-		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("chaingun"))] )
+		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("King Frost (Mabufudyne) (Ice)"))] )
 	{
-		ent->client->newweapon = FindItem ("chaingun");
+		ent->client->newweapon = FindItem ("King Frost (Mabufudyne) (Ice)");
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))]
-		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("machinegun"))] )
+		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("Raiju (Zio) (Electric)"))] )
 	{
-		ent->client->newweapon = FindItem ("machinegun");
+		ent->client->newweapon = FindItem ("Raiju (Zio) (Electric)");
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("shells"))] > 1
-		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("super shotgun"))] )
+		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("Pyro-Jack (Agi) (Fire)"))] )
 	{
-		ent->client->newweapon = FindItem ("super shotgun");
+		ent->client->newweapon = FindItem ("Pyro-Jack (Agi) (Fire)");
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("shells"))]
-		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("shotgun"))] )
+		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("Jack Frost (Bufu) (Ice)"))] )
 	{
-		ent->client->newweapon = FindItem ("shotgun");
+		ent->client->newweapon = FindItem ("Jack Frost (Bufu) (Ice)");
 		return;
 	}
-	ent->client->newweapon = FindItem ("blaster");
+	ent->client->newweapon = FindItem ("Hermes (Power Slash) (Physical)");
 }
 
 /*
