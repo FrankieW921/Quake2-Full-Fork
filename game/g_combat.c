@@ -491,6 +491,10 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 		else
 			SpawnDamage (te_sparks, point, normal, take);
 
+		if (attacker->client) { //damageMod increases with player level
+			take *= attacker->client->pers.damageMod;
+		}
+
 		//fgw
 		//ifs for monster weaknesses/resistances based on Means of Death
 		//1.5x damage for weakness, .75x damage for resistance
@@ -573,6 +577,18 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			if ((targ->svflags & SVF_MONSTER) || (client))
 				targ->flags |= FL_NO_KNOCKBACK;
 			Killed (targ, inflictor, attacker, take, point);
+
+			//kill an enemy, get exp, get enough and get a level which increases your max health and damage
+			if (attacker->client) { //only apply for the client, not enemies
+				attacker->client->pers.experience += 1;
+				if (attacker->client->pers.experience == 10) {
+					attacker->client->pers.experience = 0;
+					attacker->client->pers.level += 1;
+					attacker->client->pers.max_health += 10;
+					attacker->client->pers.damageMod += .05;
+					gi.centerprintf(attacker, "You leveled up! Max health up, damage up.");
+				}
+			}
 			return;
 		}
 	}

@@ -862,6 +862,11 @@ typedef struct
 	int			helpchanged;
 
 	qboolean	spectator;			// client is a spectator
+
+	//fgw, new values for player level
+	int			experience;
+	int			level;
+	double		damageMod;
 } client_persistant_t;
 
 // client data that stays across deathmatch respawns
