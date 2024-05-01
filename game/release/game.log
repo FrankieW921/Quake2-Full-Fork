@@ -21,8 +21,8 @@ C:\Users\chief\Github\Quake2-Full-Fork\game\g_cmds.c(897,3): warning C4996: 'str
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_cmds.c(885,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_cmds.c(893,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   g_combat.c
-C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(370,51): warning C4100: 'attacker': unreferenced formal parameter
-C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(370,36): warning C4100: 'targ': unreferenced formal parameter
+C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(381,51): warning C4100: 'attacker': unreferenced formal parameter
+C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(381,36): warning C4100: 'targ': unreferenced formal parameter
   g_func.c
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_func.c(428,55): warning C4100: 'activator': unreferenced formal parameter
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_func.c(428,39): warning C4100: 'other': unreferenced formal parameter
@@ -226,8 +226,8 @@ C:\Users\chief\Github\Quake2-Full-Fork\game\m_berserk.c(381,43): warning C4100: 
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_utils.c(215): warning C4706: assignment within conditional expression
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_utils.c(232): warning C4706: assignment within conditional expression
 C:\Users\chief\Github\Quake2-Full-Fork\game\g_func.c(859): warning C4706: assignment within conditional expression
-C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(249): warning C4701: potentially uninitialized local variable 'index' used
-C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(209): warning C4701: potentially uninitialized local variable 'power' used
+C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(260): warning C4701: potentially uninitialized local variable 'index' used
+C:\Users\chief\Github\Quake2-Full-Fork\game\g_combat.c(220): warning C4701: potentially uninitialized local variable 'power' used
   Compiling...
   m_boss2.c
 C:\Users\chief\Github\Quake2-Full-Fork\game\m_boss2.c(470,55): warning C4100: 'kick': unreferenced formal parameter

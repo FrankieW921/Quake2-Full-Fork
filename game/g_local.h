@@ -863,7 +863,7 @@ typedef struct
 
 	qboolean	spectator;			// client is a spectator
 
-	//fgw, new values for player level
+	//new values for player level
 	int			experience;
 	int			level;
 	double		damageMod;

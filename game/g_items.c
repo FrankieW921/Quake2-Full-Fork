@@ -301,7 +301,7 @@ qboolean Pickup_Pack (edict_t *ent, edict_t *other)
 			other->client->pers.inventory[index] = other->client->pers.max_cells;
 	}
 
-	item = FindItem("Grenades");
+	item = FindItem("Siegfried (Vorpal Blade) (Physical)"); //Siegfried (Vorpal Blade) (Physical)
 	if (item)
 	{
 		index = ITEM_INDEX(item);
@@ -1413,10 +1413,10 @@ always owned, never in the world
 		"models/items/ammo/grenades/medium/tris.md2", 0,
 		"models/weapons/v_handgr/tris.md2",
 /* icon */		"a_grenades",
-/* pickup */	"Siegfried (Vorpal Blade) (Physical)",
+/* pickup */	"Siegfried (Vorpal Blade) (Physical)", //Siegfried (Vorpal Blade) (Physical)
 /* width */		3,
 		5,
-		"grenades",
+		"Siegfried (Vorpal Blade) (Physical)",
 		IT_AMMO|IT_WEAPON,
 		WEAP_GRENADES,
 		NULL,
@@ -1439,7 +1439,7 @@ always owned, never in the world
 /* pickup */	"Surt (Ragnarok) (Fire)",
 		0,
 		1,
-		"Grenades",
+		"Siegfried (Vorpal Blade) (Physical)",
 		IT_WEAPON|IT_STAY_COOP,
 		WEAP_GRENADELAUNCHER,
 		NULL,

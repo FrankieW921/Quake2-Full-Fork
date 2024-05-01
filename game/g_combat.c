@@ -102,6 +102,17 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 		if (!(targ->monsterinfo.aiflags & AI_GOOD_GUY))
 		{
 			level.killed_monsters++;
+			if (attacker->client) { //only apply for the client, not enemies
+				attacker->client->pers.experience += 1;
+				if (attacker->client->pers.experience == 10) {
+					attacker->client->pers.experience = 0;
+					attacker->client->pers.level += 1;
+					attacker->client->pers.max_health += 10;
+					attacker->client->pers.damageMod += .05;
+					gi.centerprintf(attacker, "You leveled up! Max health up, damage up.");
+				}
+			}
+			
 			if (coop->value && attacker->client)
 				attacker->client->resp.score++;
 			// medics won't heal monsters that they kill themselves
@@ -522,9 +533,15 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 		if (meansOfDeath == 1 || meansOfDeath == 15) { 
 			if (strcmp(targ->classname, "monster_gunner") == 0 || strcmp(targ->classname, "monster_soldier_light") == 0 || strcmp(targ->classname, "monster_medic") == 0) {
 				take *= 1.5;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Weak to physical!!");
+				}
 			}
 			if (strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_solider") == 0 || strcmp(targ->classname, "monster_tank") == 0) {
 				take *= .75;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Resistant to physical.");
+				}
 			}
 		}
 		//fire damage, supershotgun and grenade launcher
@@ -532,10 +549,16 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			if (strcmp(targ->classname, "monster_infantry") == 0 || strcmp(targ->classname, "monster_chick") == 0 || strcmp(targ->classname, "monster_parasite") == 0 
 				|| strcmp(targ->classname, "monster_soldier_ss") == 0) {
 				take *= 1.5;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Weak to fire!!");
+				}
 			}
 			if (strcmp(targ->classname, "monster_flipper") == 0 || strcmp(targ->classname, "monster_flyer") == 0 || strcmp(targ->classname, "monster_mutant") == 0
 				|| strcmp(targ->classname, "monster_tank_commander") == 0) {
 				take *= .75;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Resistant to fire.");
+				}
 			}
 		}
 		//ice damage, shotgun and chaingun
@@ -543,9 +566,15 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_solider") == 0
 				|| strcmp(targ->classname, "monster_floater") == 0) {
 				take *= 1.5;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Weak to ice!!");
+				}
 			}
 			if (strcmp(targ->classname, "monster_infantry") == 0 || strcmp(targ->classname, "monster_gunner") == 0 || strcmp(targ->classname, "monster_soldier_ss") == 0) {
 				take *= .75;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Resistant to ice.");
+				}
 			}
 		}
 		//electric damage, machinegun and railgun
@@ -553,20 +582,32 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			if (strcmp(targ->classname, "monster_flipper") == 0 || strcmp(targ->classname, "monster_flyer") == 0 || strcmp(targ->classname, "monster_hover") == 0
 				|| strcmp(targ->classname, "monster_tank_commander") == 0) {
 				take *= 1.5;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Weak to electric!!");
+				}
 			}
 			if (strcmp(targ->classname, "monster_gladiator") == 0 || strcmp(targ->classname, "monster_chick") == 0 || strcmp(targ->classname, "monster_parasite") == 0
 				|| strcmp(targ->classname, "monster_floater") == 0) {
 				take *= .75;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Resistant to electric.");
+				}
 			}
 		}
 		//force damage, rocket launcher and BFG
 		else if (meansOfDeath == 8 || meansOfDeath == 9 || meansOfDeath == 12 || meansOfDeath == 13 || meansOfDeath == 14) { 
 			if (strcmp(targ->classname, "monster_gladiator") == 0 || strcmp(targ->classname, "monster_mutant") == 0 || strcmp(targ->classname, "monster_tank") == 0) {
 				take *= 1.5;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Weak to force!!");
+				}
 			}
 			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_hover") == 0 || strcmp(targ->classname, "monster_soldier_light") == 0 
 				|| strcmp(targ->classname, "monster_medic") == 0) {
 				take *= .75;
+				if (attacker->client) {
+					gi.centerprintf(attacker, "Resistant to force.");
+				}
 			}
 		}
 
@@ -578,7 +619,11 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 				targ->flags |= FL_NO_KNOCKBACK;
 			Killed (targ, inflictor, attacker, take, point);
 
+			//BUG: this will still execute even when you shoot a corpse (not gibs tho) since corpses are just the enemy with <=0 health
+			//most prevalent with the shotgun and super shotgun since it fires more than 1 bulleg
 			//kill an enemy, get exp, get enough and get a level which increases your max health and damage
+
+			/*
 			if (attacker->client) { //only apply for the client, not enemies
 				attacker->client->pers.experience += 1;
 				if (attacker->client->pers.experience == 10) {
@@ -589,7 +634,9 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 					gi.centerprintf(attacker, "You leveled up! Max health up, damage up.");
 				}
 			}
+			*/
 			return;
+			
 		}
 	}
 
