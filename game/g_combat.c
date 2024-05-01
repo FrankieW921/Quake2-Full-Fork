@@ -506,6 +506,18 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 			take *= attacker->client->pers.damageMod;
 		}
 
+		if (targ->client) { //equipment damage changes
+			if (targ->client->pers.currentEquip == 0) { //neutral equip
+				//base equip, no change to damage, included here for consistency
+			}
+			else if (targ->client->pers.currentEquip == 1) { //attack equip
+				take *= 1.25;
+			}
+			else if (targ->client->pers.currentEquip == 2) { //defense equip
+				take *= .75;
+			}
+		}
+
 		//fgw
 		//ifs for monster weaknesses/resistances based on Means of Death
 		//1.5x damage for weakness, .75x damage for resistance
@@ -619,9 +631,8 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 				targ->flags |= FL_NO_KNOCKBACK;
 			Killed (targ, inflictor, attacker, take, point);
 
-			//BUG: this will still execute even when you shoot a corpse (not gibs tho) since corpses are just the enemy with <=0 health
-			//most prevalent with the shotgun and super shotgun since it fires more than 1 bulleg
-			//kill an enemy, get exp, get enough and get a level which increases your max health and damage
+			//FORMER LOCATION FOR THE LEVEL UP CODE
+			//MOVED TO Killed() TO PREVENT CORPSES FROM COUNTING TOWARDS THE EXP COUNT
 
 			/*
 			if (attacker->client) { //only apply for the client, not enemies

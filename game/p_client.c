@@ -631,6 +631,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.experience = 0;
 	client->pers.level			= 1;
 	client->pers.damageMod = 1.0;
+
 }
 
 

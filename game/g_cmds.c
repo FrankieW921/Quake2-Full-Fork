@@ -899,6 +899,40 @@ void Cmd_PlayerList_f(edict_t *ent)
 	gi.cprintf(ent, PRINT_HIGH, "%s", text);
 }
 
+//0 = baseline/neutral
+//1 = attacking equip, do more damage but take more damage
+//2 = defense equip, do less damage and take less damage
+//cycle through with j, objective text will be changed to reflect the current equip
+//the currentEquip variable will be checked in T_Damage to determine whether to increase or decrease the damage dealt to the player
+void Cmd_Equipment(edict_t *ent) {
+	if (!ent || !ent->client) return; 
+
+	if (ent->client->pers.currentEquip == 0) { //switching to attack equip from neutral equip
+		ent->client->pers.currentEquip = 1;
+		ent->client->pers.damageMod += .5;
+		gi.centerprintf(ent, "Equip change! Attack armor equipped.");
+
+		//crashes the game currently
+		char buffer[50];
+		snprintf(buffer, 50, '%d', ent->client->pers.damageMod);
+		char message[1024] = "Attack armor equipped. \n Damage modifier is ";
+		strcat(message, buffer);
+		strcat(message, ", damage recieved +25%.");
+
+		strcpy(game.helpmessage1, message);
+	}
+	else if (ent->client->pers.currentEquip == 1) { //switching to defense equip from attacking equip
+		ent->client->pers.currentEquip = 2;
+		ent->client->pers.damageMod -= 1.0;
+		gi.centerprintf(ent, "Equip change! Defense armor equipped.");
+	}
+	else if (ent->client->pers.currentEquip == 2) { //switching to neutral equip from defense equip
+		ent->client->pers.currentEquip = 0;
+		ent->client->pers.damageMod += .5; //back to baseline, .5 - 1 + .5 = 0
+		gi.centerprintf(ent, "Equip change! Normal armor equipped.");
+	}
+}
+
 
 /*
 =================
@@ -987,6 +1021,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Wave_f (ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
+	else if (Q_stricmp(cmd, "equipment") == 0)
+		Cmd_Equipment(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

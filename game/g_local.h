@@ -601,6 +601,7 @@ extern	gitem_t	itemlist[];
 //
 void Cmd_Help_f (edict_t *ent);
 void Cmd_Score_f (edict_t *ent);
+void Cmd_Equipment(edict_t *ent);
 
 //
 // g_items.c
@@ -867,6 +868,8 @@ typedef struct
 	int			experience;
 	int			level;
 	double		damageMod;
+
+	int currentEquip; //0 = neutral, 1 = attacking equip (damage mode +=.5 but take 25% more damage), 2 = defense equip (damage mod -=.5 (-=1 from attacking equip), take 25% less damage
 } client_persistant_t;
 
 // client data that stays across deathmatch respawns
