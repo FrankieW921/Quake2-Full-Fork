@@ -949,6 +949,15 @@ void Cmd_Equipment(edict_t *ent) {
 	}
 }
 
+void Cmd_ModHelp(edict_t *ent) {
+	if (!ent || !ent->client) {
+		return;
+	}
+
+	gi.cprintf(ent, PRINT_HIGH, "All weapons are now Demons from Shin Megami Tensei. \nAll Demons use a specific spell with a damage type, Physical, Fire, Ice, Electric, or Force (seen by pressing Tab).\nAll enemies other than bosses are weak to and resist a damage type. \nA message will appear on screen indicating when an enemy is weak to or resists a damage type. \nKilling 10 enemies levels you up, giving you +10 max hp and increasing the damage you do by 5 percent. \nPress J to cycle through different armors. Press F1 to see which armor you have equipped (only after pressing J the first time). \nNeutral armor changes nothing, \nAttack armor increases your damage by 50 percent but you take 25 percent more damage, \nDefense armor decreases your damage by 50 percent but you take 25 percent less damage.");
+
+}
+
 
 /*
 =================
@@ -1039,6 +1048,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_PlayerList_f(ent);
 	else if (Q_stricmp(cmd, "equipment") == 0)
 		Cmd_Equipment(ent);
+	else if (Q_stricmp(cmd, "modhelp") == 0)
+		Cmd_ModHelp(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }
