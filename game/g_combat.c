@@ -110,6 +110,21 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 					attacker->client->pers.max_health += 10;
 					attacker->client->pers.damageMod += .05;
 					gi.centerprintf(attacker, "You leveled up! Max health up, damage up.");
+
+					//rewrite secondary objective
+					char message1[100] = "Current Level: ";
+					char buffer1[50];
+					itoa(attacker->client->pers.level, buffer1, 10);
+					char message2[100] = "\nMax HP: ";
+					char buffer2[50];
+					itoa(attacker->client->pers.max_health, buffer2, 10);
+					char finalMessage[200];
+					strcat(finalMessage, message1);
+					strcat(finalMessage, buffer1);
+					strcat(finalMessage, message2);
+					strcat(finalMessage, buffer2);
+
+					strcpy(game.helpmessage2, finalMessage);
 				}
 			}
 			
