@@ -912,12 +912,12 @@ void Cmd_Equipment(edict_t *ent) {
 		ent->client->pers.damageMod += .5;
 		gi.centerprintf(ent, "Equip change! Attack armor equipped.");
 
-		//crashes the game currently
-		char buffer[50];
-		snprintf(buffer, 50, '%d', ent->client->pers.damageMod);
+		//changes the primary objective text
+		char buffer[50]; 
+		gcvt(ent->client->pers.damageMod, 4, buffer);
 		char message[1024] = "Attack armor equipped. \n Damage modifier is ";
 		strcat(message, buffer);
-		strcat(message, ", damage recieved +25%.");
+		strcat(message, ", \n damage recieved +25%.");
 
 		strcpy(game.helpmessage1, message);
 	}
@@ -925,11 +925,27 @@ void Cmd_Equipment(edict_t *ent) {
 		ent->client->pers.currentEquip = 2;
 		ent->client->pers.damageMod -= 1.0;
 		gi.centerprintf(ent, "Equip change! Defense armor equipped.");
+
+		char buffer[50];
+		gcvt(ent->client->pers.damageMod, 4, buffer);
+		char message[1024] = "Defense armor equipped. \n Damage modifier is ";
+		strcat(message, buffer);
+		strcat(message, ", \n damage recieved -25%.");
+
+		strcpy(game.helpmessage1, message);
 	}
 	else if (ent->client->pers.currentEquip == 2) { //switching to neutral equip from defense equip
 		ent->client->pers.currentEquip = 0;
 		ent->client->pers.damageMod += .5; //back to baseline, .5 - 1 + .5 = 0
 		gi.centerprintf(ent, "Equip change! Normal armor equipped.");
+
+		char buffer[50];
+		gcvt(ent->client->pers.damageMod, 4, buffer);
+		char message[1024] = "Defense armor equipped. \n Damage modifier is ";
+		strcat(message, buffer);
+		strcat(message, ", \n damage recieved normal.");
+
+		strcpy(game.helpmessage1, message);
 	}
 }
 
