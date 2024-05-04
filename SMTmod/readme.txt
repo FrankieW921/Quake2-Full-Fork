@@ -10,5 +10,7 @@ Attack armor increases your damage by 50 percent but you take 25 percent more da
 Defense armor decreases your damage by 50 percent but you take 25 percent less damage.
 Type 'modhelp' into the console to see these instructions in game.
 
+To install, put this folder into your Quake 2 folder under Steam/steamapps/common/Quake 2
+
 Franklin Wamsher
 fgw@njit.edu
