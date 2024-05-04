@@ -1,29 +1,14 @@
+All weapons are now Demons from Shin Megami Tensei.
+All Demons use a specific spell with a damage type, Physical, Fire, Ice, Electric, or Force (can be seen by pressing Tab).
+All enemies other than bosses are weak to and resist a damage type. 
+A message will appear on screen indicating when an enemy is weak to or resists a damage type.
+Killing 10 enemies levels you up, giving you +10 max hp and increasing the damage you do by 5 percent.
+Press F1 to see your current level and maximum health (only visible after the first level up).
+Press J to cycle through different armor equips. Press F1 to see which armor you have equipped (only visible after pressing J the first time). 
+Neutral armor changes nothing, 
+Attack armor increases your damage by 50 percent but you take 25 percent more damage, 
+Defense armor decreases your damage by 50 percent but you take 25 percent less damage.
+Type 'modhelp' into the console to see these instructions in game.
 
-This is the complete source code for Quake 2, version 3.19, buildable with
-visual C++ 6.0.  The linux version should be buildable, but we haven't
-tested it for the release.
-
-The code is all licensed under the terms of the GPL (gnu public license).  
-You should read the entire license, but the gist of it is that you can do 
-anything you want with the code, including sell your new version.  The catch 
-is that if you distribute new binary versions, you are required to make the 
-entire source code available for free to everyone.
-
-The primary intent of this release is for entertainment and educational 
-purposes, but the GPL does allow commercial exploitation if you obey the 
-full license.  If you want to do something commercial and you just can't bear 
-to have your source changes released, we could still negotiate a separate 
-license agreement (for $$$), but I would encourage you to just live with the 
-GPL.
-
-All of the Q2 data files remain copyrighted and licensed under the 
-original terms, so you cannot redistribute data from the original game, but if 
-you do a true total conversion, you can create a standalone game based on 
-this code.
-
-Thanks to Robert Duffy for doing the grunt work of building this release.
-
-John Carmack
-Id Software
-
-
+Franklin Wamsher
+fgw@njit.edu

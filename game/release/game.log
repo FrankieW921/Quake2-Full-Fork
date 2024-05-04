@@ -415,12 +415,12 @@ C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(179,43): warning C4100: '
 C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(179,28): warning C4100: 'self': unreferenced formal parameter
 C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(211,46): warning C4100: 'inflictor': unreferenced formal parameter
 C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(501,91): warning C4100: 'point': unreferenced formal parameter
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(936,89): warning C4100: 'point': unreferenced formal parameter
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(936,60): warning C4100: 'attacker': unreferenced formal parameter
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(936,40): warning C4100: 'inflictor': unreferenced formal parameter
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1375,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1380,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1420,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(937,89): warning C4100: 'point': unreferenced formal parameter
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(937,60): warning C4100: 'attacker': unreferenced formal parameter
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(937,40): warning C4100: 'inflictor': unreferenced formal parameter
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1376,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1381,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\chief\Github\Quake2-Full-Fork\game\p_client.c(1421,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   p_hud.c
 C:\Users\chief\Github\Quake2-Full-Fork\game\p_hud.c(234,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\chief\Github\Quake2-Full-Fork\game\p_hud.c(245,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

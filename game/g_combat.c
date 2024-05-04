@@ -590,7 +590,7 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 		}
 		//ice damage, shotgun and chaingun
 		else if (meansOfDeath == 2 || meansOfDeath == 5) { 
-			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_solider") == 0
+			if (strcmp(targ->classname, "monster_brains") == 0 || strcmp(targ->classname, "monster_berserk") == 0 || strcmp(targ->classname, "monster_soldier") == 0
 				|| strcmp(targ->classname, "monster_floater") == 0) {
 				take *= 1.5;
 				if (attacker->client) {

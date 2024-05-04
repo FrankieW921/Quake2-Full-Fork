@@ -632,6 +632,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.level			= 1;
 	client->pers.damageMod = 1.0;
 
+	client->pers.currentEquip = 0;
 }
 
 
